@@ -26,7 +26,7 @@
 #### Challenge #1:
 > As a user, 
 I want to view a new feature button "**Add to watchlist**" below the summary section of the movie details page that saves the movie to my watch list. 
-So that I can go to "**My Watchlist**" page later and view all the movies I added to my watchlist.
+So that I can go to "**My Watchlist**" page later and view all the movies that I added to the watchlist.
 
 
 #### Challenge #2:
