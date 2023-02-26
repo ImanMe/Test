@@ -1,7 +1,7 @@
 
 # Movies App
 
-**Movies.Api project is a .NET Core api** this project was built with .NET 5, conatains all endpoints needed to build a full Movies Database frontend app.
+**Movies.Api project is a .NET Core API** this project was built with .NET 5, contains all endpoints needed to build a full Movies Database frontend app.
 * Swagger documentation for all the available endpoints can be found here: https://localhost:5001/swagger/index.html
 
 **Movies.App project is a frontend Angular app** This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2. The app allows end users to search, rate and view upcoming movies in the theatre. There is also an Admin section for admins level permissions that allows admin to manage all aspects of the database content like movies, actors, users, theatres etc.
@@ -10,7 +10,7 @@
  
 > Database connection is already set in the appsettings.json, the database is already populated with fake data.
 
-> There is Azure storage connection string available in the appsettings which you can utilize to sotre piuctures if required in the challenge.
+> There is Azure storage connection string available in the appsettings which you can utilize to store pictures if required in the challenge.
 
 **Login details:**
 - End user Account:
@@ -31,19 +31,20 @@ So that I can go to "**My Watchlist**" page later and view all the movies I adde
 
 #### Challenge #2:
 > As a user, 
-I want to see a new menu item on the top navgation bar called "My watchlist"
+I want to see a new menu item on the top navigation bar called "My watchlist"
 So that, I can view all the movies I had previously added to my watchlist.
 
 
 #### Challenge #3:
 > As an admin,
-I want to be able to view a **full list of Actors** with their Fullname, Date of birth and Small picture available in the movies database and be able to **Add/Update/Delete** the actors
+I want to be able to view a **full list of Actors** with their Full name, Date of birth and Small picture available in the movies database and be able to **Add/Update/Delete** the actors
 So that I can manage the Actors in movies database. 
 
-The project uses Angular material but we highly encourage you to use DevExtreme controls for completing this challenge, however you are free to use pick your preferred controls and components to develop with.
+The project uses Angular material, but we **highly encourage you to use DevExtreme** controls for completing this challenge but is not mandatory.
+* Instructions on add DevExtreme to the project (if you decide to use it): https://js.devexpress.com/Documentation/Guide/Angular_Components/Getting_Started/Add_DevExtreme_to_an_Angular_CLI_Application/#Install_DevExtreme
 
 # Setup Instructions:
-- **movies.api** - open the API folder in your VS code terminal or command line utility or Powershell and run the followin commands:
+- **movies.api** - open the API folder in your VS code terminal or command line utility or Powershell and run the following commands:
 `dotnet restore`
 `dotnet build`
 `dotnet run`
