@@ -21,7 +21,7 @@
 **username: admin@moviesapp.com** / 
 **password: Adminpass@000**
 
-## Challenge
+# Challenge
 
 #### Challenge #1:
 > As a user, 
