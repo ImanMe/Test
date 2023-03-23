@@ -40,7 +40,7 @@ So that, I can view all the movies I had previously added to my watchlist.
 I want to be able to view a **full list of Actors** with their Full name, Date of birth and Small picture available in the movies database and be able to **Add/Update/Delete** the actors
 So that I can manage the Actors in movies database. 
 
-The project uses Angular material, but we **highly encourage you to use DevExtreme** controls for completing this challenge but is not mandatory.
+The project uses Angular material, but we **highly encourage you to use DevExtreme** controls for completing this challenge but is not mandatory. However, you get bonus points for using DevExtreme suite of controls.
 * Instructions on add DevExtreme to the project (if you decide to use it): https://js.devexpress.com/Documentation/Guide/Angular_Components/Getting_Started/Add_DevExtreme_to_an_Angular_CLI_Application/#Install_DevExtreme
 
 # Setup Instructions:
