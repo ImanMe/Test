@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -34,54 +33,38 @@ namespace movies.api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Post([FromBody] WatchListCreationDTO watchListCreationDTO)
         {
-            try
-            {
-                var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "email")?.Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "email")?.Value;
 
-                if (string.IsNullOrWhiteSpace(email))
-                    return BadRequest();
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest();
 
-                var user = await _userManager.FindByEmailAsync(email);
-                var userId = user.Id;
-                var userMovie = _mapper.Map<MoviesUsers>(watchListCreationDTO);
-                userMovie.UserId = userId;
-                await _context.AddAsync(userMovie);
-                await _context.SaveChangesAsync();
-                return NoContent();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            var user = await _userManager.FindByEmailAsync(email);
+            var userId = user.Id;
+            var userMovie = _mapper.Map<MoviesUsers>(watchListCreationDTO);
+            userMovie.UserId = userId;
+            await _context.AddAsync(userMovie);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Get()
         {
-            try
-            {
-                var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "email")?.Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "email")?.Value;
 
-                if (string.IsNullOrWhiteSpace(email))
-                    return BadRequest();
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest();
 
-                var user = await _userManager.FindByEmailAsync(email);
-                var userId = user.Id;
-                var watchListMovieIds = _context.MoviesUsers.Where(x => x.UserId == userId)
-                    .Select(x => x.MovieId).ToList();
+            var user = await _userManager.FindByEmailAsync(email);
+            var userId = user.Id;
+            var watchListMovieIds = _context.MoviesUsers.Where(x => x.UserId == userId)
+                .Select(x => x.MovieId).ToList();
 
-                var movies = await _context.Movies.Where(x => watchListMovieIds.Contains(x.Id)).ToListAsync();
+            var movies = await _context.Movies.Where(x => watchListMovieIds.Contains(x.Id)).ToListAsync();
 
-                var userMovie = _mapper.Map<IList<MovieDTO>>(movies);
-                return Ok(userMovie);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            var userMovie = _mapper.Map<IList<MovieDTO>>(movies);
+            return Ok(userMovie);
         }
 
         [HttpGet("{id:int}")]
