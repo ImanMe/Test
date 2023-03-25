@@ -13,11 +13,9 @@ export class FormActorComponent implements OnInit {
 
   form: FormGroup;
 
-  @Input()
-  model: actorCreationDTO;
+  @Input() model: actorCreationDTO;
 
-  @Output()
-  onSaveChanges = new EventEmitter<actorCreationDTO>();
+  @Output() onSaveChanges = new EventEmitter<actorCreationDTO>();
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -45,5 +43,4 @@ export class FormActorComponent implements OnInit {
   saveChanges(){
     this.onSaveChanges.emit(this.form.value);
   }
-
 }

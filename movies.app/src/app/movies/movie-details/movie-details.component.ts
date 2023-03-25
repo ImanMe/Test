@@ -3,6 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { coordinatesMapWithMessage } from 'src/app/utilities/map/coordinate';
 import { RatingService } from 'src/app/utilities/rating.service';
+import { WatchListService } from 'src/app/utilities/watch-list.service';
 import Swal from 'sweetalert2';
 import { movieDTO } from '../movies.model';
 import { MoviesService } from '../movies.service';
@@ -17,16 +18,19 @@ export class MovieDetailsComponent implements OnInit {
     private moviesService: MoviesService,
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private ratingsService: RatingService
+    private ratingsService: RatingService,
+    private watchListService: WatchListService
   ) {}
 
   movie: movieDTO;
   releaseDate: Date;
   trailerURL: SafeResourceUrl;
   coordinates: coordinatesMapWithMessage[] = [];
+  isAddedToWatchList:boolean = false;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
+      this.isMovieAddedToWatchList(params.id);
       this.moviesService.getById(params.id).subscribe((movie) => {
         this.movie = movie;
         this.releaseDate = new Date(movie.releaseDate);
@@ -39,6 +43,13 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
+  isMovieAddedToWatchList = (id:number) => {
+    this.watchListService.getById(id).subscribe(result => {
+      if(result){
+        this.isAddedToWatchList = true;
+      }
+    });
+  }
   generateYoutubeURLForEmbeddedVideo(url: any): SafeResourceUrl{
     if (!url){
       return '';
@@ -56,6 +67,13 @@ export class MovieDetailsComponent implements OnInit {
   onRating(rate: number){
     this.ratingsService.rate(this.movie.id, rate).subscribe(() => {
       Swal.fire("Success", "Your vote has been received", "success");
+    });
+  }
+
+  addToWatchList = () => {
+    this.watchListService.add(this.movie.id).subscribe(() => {
+      Swal.fire("Success", "Movie was added to your watchlist", "success");
+      this.isAddedToWatchList = true;
     });
   }
 }

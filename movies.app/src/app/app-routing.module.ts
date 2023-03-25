@@ -1,3 +1,4 @@
+import { WatchListComponent } from './watch-list/watch-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexActorsComponent } from './actors/index-actors/index-actors.component';
@@ -16,6 +17,8 @@ import { MovieFilterComponent } from './movies/movie-filter/movie-filter.compone
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { UsersIndexComponent } from './security/users-index/users-index.component';
+import { CreateActorComponent } from './actors/create-actor/create-actor.component';
+import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,6 +26,8 @@ const routes: Routes = [
   {path: 'genres/create', component: CreateGenreComponent, canActivate: [IsAdminGuard]},
   {path: 'genres/edit/:id', component: EditGenreComponent, canActivate: [IsAdminGuard]},
   {path: 'actors', component: IndexActorsComponent, canActivate: [IsAdminGuard]},
+  {path: 'actors/create', component: CreateActorComponent, canActivate: [IsAdminGuard]},
+  {path: 'actors/edit/:id', component: EditActorComponent, canActivate: [IsAdminGuard]},
   {path: 'movietheaters', component: IndexMovieTheaterComponent, canActivate: [IsAdminGuard]},
   {path: 'movietheaters/create', component: CreateMovieTheaterComponent, canActivate: [IsAdminGuard]},
   {path: 'movietheaters/edit/:id', component: EditMovieTheaterComponent, canActivate: [IsAdminGuard]},
@@ -30,6 +35,7 @@ const routes: Routes = [
   {path: 'movies/edit/:id', component: EditMovieComponent, canActivate: [IsAdminGuard]},
   {path: 'movies/filter', component: MovieFilterComponent},
   {path: 'movie/:id', component: MovieDetailsComponent},
+  {path: 'watchlist', component: WatchListComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'users', component: UsersIndexComponent, canActivate: [IsAdminGuard]},

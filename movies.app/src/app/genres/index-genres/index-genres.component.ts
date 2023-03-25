@@ -32,5 +32,4 @@ export class IndexGenresComponent implements OnInit {
       this.loadGenres();
     });
   }
-
 }

@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.Entities;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
+using movies.api.Entities;
 
 namespace MoviesAPI
 {
@@ -27,6 +24,9 @@ namespace MoviesAPI
             modelBuilder.Entity<MovieTheatersMovies>()
                 .HasKey(x => new {x.MovieTheaterId, x.MovieId });
 
+            modelBuilder.Entity<MoviesUsers>()
+                .HasKey(x => new { x.MovieId, x.UserId });
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -38,5 +38,6 @@ namespace MoviesAPI
         public DbSet<MoviesGenres> MoviesGenres { get; set; }
         public DbSet<MovieTheatersMovies> MovieTheatersMovies { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<MoviesUsers> MoviesUsers { get; set; }
     }
 }

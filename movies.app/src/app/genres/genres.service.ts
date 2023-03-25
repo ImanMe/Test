@@ -22,6 +22,8 @@ export class GenresService {
   }
 
   create(genre: genreCreationDTO){
+    console.log('genre', genre);
+    
     return this.http.post(this.apiURL, genre);
   }
 

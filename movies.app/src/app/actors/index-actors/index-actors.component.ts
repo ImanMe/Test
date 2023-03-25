@@ -11,10 +11,24 @@ import { ActorsService } from '../actors.service';
 })
 export class IndexActorsComponent implements OnInit {
 
+  actors: actorDTO[] = [];
   constructor(private actorsService: ActorsService) { }
 
   ngOnInit(): void {
-
+    this.getAllActors();
   }
 
+  getAllActors = () => {
+    this.actorsService.getAll(1,10).subscribe(result => {
+      this.actors = result;
+    });
+  }
+
+  delete = (id:number) => {
+    this.actorsService.delete(id) .subscribe(() => {
+      this.getAllActors();
+    });
+  }
+
+  columnsToDisplay = ['name', 'dateOfBirth', 'picture',  'actions'];
 }

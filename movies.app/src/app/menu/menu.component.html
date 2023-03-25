@@ -4,12 +4,17 @@
       <mat-icon>local_movies</mat-icon> AngularMovies
     </a>
   </span>
-
   <div>
     <a mat-button routerLink="movies/filter">
       <mat-icon>search</mat-icon>Search movies</a
     >
-  </div>
+  </div>  
+  
+  <app-authorize-view>
+    <ng-container authorized>
+      <a mat-button routerLink="watchlist">My Watchlist</a>
+    </ng-container>
+  </app-authorize-view>
 
   <app-authorize-view [role]="'admin'">
     <ng-container authorized>
@@ -27,8 +32,7 @@
 
       <div>
         <a mat-button routerLink="movies/create"> Create Movie </a>
-      </div>
-
+      </div>     
       <div>
         <a mat-button routerLink="users"> Users </a>
       </div>

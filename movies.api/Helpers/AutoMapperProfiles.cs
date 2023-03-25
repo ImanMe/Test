@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using MoviesAPI.DTOs;
 using MoviesAPI.Entities;
 using NetTopologySuite.Geometries;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using movies.api.DTOs;
+using movies.api.Entities;
 
 namespace MoviesAPI.Helpers
 {
@@ -42,6 +41,7 @@ namespace MoviesAPI.Helpers
 
             CreateMap<IdentityUser, UserDTO>();
 
+            CreateMap<WatchListCreationDTO, MoviesUsers>();
         }
 
         private List<ActorsMovieDTO> MapMoviesActors(Movie movie, MovieDTO movieDTO)

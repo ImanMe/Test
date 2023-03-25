@@ -37,7 +37,10 @@
         <markdown [data]="movie.summary" ngPreserveWhitespaces></markdown>
       </div>
     </div>
-
+    <div style="margin-top: 1rem" >
+      <button *ngIf="!isAddedToWatchList" mat-flat-button color="primary" (click)="addToWatchList()">Add to watchlist</button>
+      <span *ngIf="isAddedToWatchList"><b>This movie is added to your watchlist</b></span>
+    </div>
     <div style="margin-top: 1rem">
       <h3>Actors</h3>
       <div style="display: flex; flex-direction: column">

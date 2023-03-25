@@ -43,6 +43,10 @@ import { RegisterComponent } from './security/register/register.component';
 import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
 import { JwtInterceptorService } from './security/jwt-interceptor.service';
 import { UsersIndexComponent } from './security/users-index/users-index.component';
+import { WatchListComponent } from './watch-list/watch-list.component';
+import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
+import { CreateActorComponent } from './actors/create-actor/create-actor.component';
+import { FormActorComponent } from './actors/form-actor/form-actor.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,12 @@ import { UsersIndexComponent } from './security/users-index/users-index.componen
     LoginComponent,
     RegisterComponent,
     AuthenticationFormComponent,
-    UsersIndexComponent
+    UsersIndexComponent,
+    WatchListComponent,
+    FormActorComponent,
+    EditActorComponent,
+    CreateActorComponent,
+        
   ],
   imports: [
     BrowserModule,
